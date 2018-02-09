@@ -7,7 +7,7 @@
 
 package org.usfirst.frc.team6910.robot;
 
-import org.usfirst.frc.team6910.robot.commands.RaiseLift;
+import org.usfirst.frc.team6910.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -44,6 +44,7 @@ public class OI {
 	// h
 	public OI() {
 		m_aButton.whenPressed( new RaiseLift() );
+		m_bButton.whenPressed( new LowerLift() );
 	}
 	
 	// Run the command while the button is being held down and interrupt it once

@@ -13,8 +13,8 @@ import org.usfirst.frc.team6910.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class RaiseLift extends Command {
-	public RaiseLift() {
+public class LowerLift extends Command {
+	public LowerLift() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.lift);
 	}
@@ -28,7 +28,7 @@ public class RaiseLift extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println("Lifting up!");
+		System.out.println("Lowering down!");
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
