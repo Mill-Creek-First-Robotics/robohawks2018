@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
 	public static CubeCollector m_cc;
 	public static Lift lift = new Lift();
 	private DifferentialDrive m_TankDrive; // Differential Drive for controlling drive chain 
-	private float m_MotorSensitivity =.6f; 
+	private float m_MotorSensitivity = -.8f; 
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -131,7 +131,7 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		m_TankDrive.tankDrive(
-				m_oi.m_controller.getY(GenericHID.Hand.kLeft) * m_MotorSensitivity * -1,
+				m_oi.m_controller.getY(GenericHID.Hand.kLeft) * m_MotorSensitivity,
 				m_oi.m_controller.getY(GenericHID.Hand.kRight) * m_MotorSensitivity
 				);
 	}
