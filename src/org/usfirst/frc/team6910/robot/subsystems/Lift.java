@@ -22,10 +22,6 @@ public class Lift extends Subsystem {
 	}
 	
 	public void move(Boolean direction) {
-		if (direction == true) {
-			System.out.println("Pulling cube out " + direction);
-		} else {
-			if(direction == false):
-				
+		
 	}
 }

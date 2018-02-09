@@ -22,7 +22,12 @@ public class CubeCollector extends Subsystem {
 	}
 	
 	public void move(Boolean direction) {
-		 //if OI.x
-		System.out.println("Pulling in Cube? ", direction);
+		if (direction == true) {
+			System.out.println("Pulling in Cube?");
+		} else {
+			if (direction == false) {
+				System.out.println("Pushing out Cube?");
+			}
+		}
 	}
 }

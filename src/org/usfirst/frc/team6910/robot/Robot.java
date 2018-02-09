@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
+import org.usfirst.frc.team6910.robot.commands.RaiseLift;
+import org.usfirst.frc.team6910.robot.subsystems.CubeCollector;
 import org.usfirst.frc.team6910.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -30,7 +32,8 @@ public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static OI m_oi;
-	
+	public static CubeCollector m_cc;
+	public static RaiseLift raiseLift;
 	private DifferentialDrive m_TankDrive; // Differential Drive for controlling drive chain 
 	private float m_MotorSensitivity =.6f; 
 	
