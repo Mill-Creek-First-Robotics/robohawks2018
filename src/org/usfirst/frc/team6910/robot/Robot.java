@@ -20,6 +20,7 @@ import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
 import org.usfirst.frc.team6910.robot.subsystems.CubeCollector;
 import org.usfirst.frc.team6910.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team6910.robot.subsystems.Lift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,7 +34,7 @@ public class Robot extends TimedRobot {
 			= new ExampleSubsystem();
 	public static OI m_oi;
 	public static CubeCollector m_cc;
-	public static RaiseLift raiseLift;
+	public static Lift lift = new Lift();
 	private DifferentialDrive m_TankDrive; // Differential Drive for controlling drive chain 
 	private float m_MotorSensitivity =.6f; 
 	

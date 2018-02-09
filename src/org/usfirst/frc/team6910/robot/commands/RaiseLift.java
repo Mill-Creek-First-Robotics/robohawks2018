@@ -16,7 +16,7 @@ import org.usfirst.frc.team6910.robot.Robot;
 public class RaiseLift extends Command {
 	public RaiseLift() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.m_cc);
+		requires(Robot.lift);
 	}
 
 	// Called just before this Command runs the first time

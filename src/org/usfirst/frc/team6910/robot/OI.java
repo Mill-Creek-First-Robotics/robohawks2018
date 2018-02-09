@@ -7,7 +7,7 @@
 
 package org.usfirst.frc.team6910.robot;
 
-import org.usfirst.frc.team6910.robot.subsystems.CubeCollector;
+import org.usfirst.frc.team6910.robot.Command.RaiseLift;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -28,7 +28,7 @@ public class OI {
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Joystick m_rightStick = new Joystick(0);
 	XboxController m_controller = new XboxController(0);
-	 Button m_aButton = new JoystickButton(m_controller, 0);
+	Button m_aButton = new JoystickButton(m_controller, 0);
 	private Button m_bButton = new JoystickButton(m_controller, 3);
 
 	// There are a few additional built in buttons you can use. Additionally,
@@ -43,7 +43,7 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// h
     
-    m_aButton.whenPressed(Robot.raiseLift());
+    m_aButton.whenPressed(new RaiseLift());
 	
 	// Run the command while the button is being held down and interrupt it once
 	// the button is released.
