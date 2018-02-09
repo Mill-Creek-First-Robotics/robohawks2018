@@ -21,7 +21,7 @@ public class Lift extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 	
-	public void move(Boolean direction) {
+	public void up() {
 		
 	}
 }

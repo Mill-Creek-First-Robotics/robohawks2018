@@ -7,7 +7,7 @@
 
 package org.usfirst.frc.team6910.robot;
 
-import org.usfirst.frc.team6910.robot.Command.RaiseLift;
+import org.usfirst.frc.team6910.robot.commands.RaiseLift;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -28,8 +28,8 @@ public class OI {
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Joystick m_rightStick = new Joystick(0);
 	XboxController m_controller = new XboxController(0);
-	Button m_aButton = new JoystickButton(m_controller, 0);
-	private Button m_bButton = new JoystickButton(m_controller, 3);
+	JoystickButton m_aButton = new JoystickButton(m_controller, 0);
+	JoystickButton m_bButton = new JoystickButton(m_controller, 3);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -42,8 +42,9 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// h
-    
-    m_aButton.whenPressed(new RaiseLift());
+	public OI() {
+		m_aButton.whenPressed( new RaiseLift() );
+	}
 	
 	// Run the command while the button is being held down and interrupt it once
 	// the button is released.

@@ -15,19 +15,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CubeCollector extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-
+	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new loop());
 	}
 	
-	public void move(Boolean direction) {
-		if (direction == true) {
-			System.out.println("Pulling in Cube?");
-		} else {
-			if (direction == false) {
-				System.out.println("Pushing out Cube?");
-			}
-		}
+	public void push() {
+		
+	}
+	
+	public void pull() {
+		
 	}
 }
