@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
@@ -25,7 +26,7 @@ public class Lift extends Subsystem  {
 	public Robot robot;
 
 	public void initDefaultCommand() {
-		m_motor = new Talon(robot.m_robotMap.liftMotor);
+		m_motor = new Talon(Robot.m_robotMap.liftMotor);
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
