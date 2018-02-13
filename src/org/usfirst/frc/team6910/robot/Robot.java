@@ -33,8 +33,9 @@ public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static OI m_oi;
-	public static CubeCollector m_cc;
-	public static Lift lift = new Lift();
+	public static CubeCollector m_cc; 
+	public static RobotMap m_robotMap;
+	public static Lift m_lift;
 	private DifferentialDrive m_TankDrive; // Differential Drive for controlling drive chain 
 	private float m_MotorSensitivity = -.8f; 
 	
@@ -48,6 +49,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
+		m_cc = new CubeCollector(); 
+		m_lift = new Lift(); m_lift.robot = this;
+		
 		Spark m_leftFrontSpark = new Spark(RobotMap.leftFrontMotor);
 		Spark m_leftBackSpark = new Spark(RobotMap.leftBackMotor);
 		SpeedControllerGroup m_leftMotorGroup = new SpeedControllerGroup(m_leftFrontSpark, m_leftBackSpark);
