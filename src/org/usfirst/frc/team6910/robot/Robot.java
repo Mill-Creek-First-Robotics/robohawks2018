@@ -18,9 +18,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
+import org.usfirst.frc.team6910.robot.commands.TankDriveWithController;
 import org.usfirst.frc.team6910.robot.subsystems.CubeCollector;
 import org.usfirst.frc.team6910.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team6910.robot.subsystems.Lift;
+import org.usfirst.frc.team6910.robot.subsystems.TankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,8 +38,8 @@ public class Robot extends TimedRobot {
 	public static CubeCollector m_cc; 
 	public static RobotMap m_robotMap;
 	public static Lift m_lift;
-	private DifferentialDrive m_TankDrive; // Differential Drive for controlling drive chain 
-	private float m_MotorSensitivity = -.8f; 
+	public static TankDrive m_tankDrive;
+	 
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -50,17 +52,11 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		m_oi = new OI();
 		m_cc = new CubeCollector(); 
-		m_lift = new Lift(); m_lift.robot = this;
+		m_lift = new Lift();
+		m_robotMap = new RobotMap();
+		m_tankDrive = new TankDrive();
 		
-		Spark m_leftFrontSpark = new Spark(RobotMap.leftFrontMotor);
-		Spark m_leftBackSpark = new Spark(RobotMap.leftBackMotor);
-		SpeedControllerGroup m_leftMotorGroup = new SpeedControllerGroup(m_leftFrontSpark, m_leftBackSpark);
 		
-		Spark m_rightFrontSpark = new Spark(RobotMap.rightFrontMotor);
-		Spark m_rightBackSpark = new Spark(RobotMap.rightBackMotor);
-		SpeedControllerGroup m_rightMotorGroup = new SpeedControllerGroup(m_rightFrontSpark, m_rightBackSpark);
-		
-		m_TankDrive = new DifferentialDrive(m_leftMotorGroup, m_rightMotorGroup);
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
@@ -134,10 +130,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		m_TankDrive.tankDrive(
-				m_oi.m_controller.getY(GenericHID.Hand.kLeft) * m_MotorSensitivity,
-				m_oi.m_controller.getY(GenericHID.Hand.kRight) * m_MotorSensitivity
-				);
+		//TankDriveWithController;
 	}
 
 	/**

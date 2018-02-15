@@ -27,9 +27,11 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Joystick m_rightStick = new Joystick(0);
-	XboxController m_controller = new XboxController(0);
-	JoystickButton m_aButton = new JoystickButton(m_controller, 0);
-	JoystickButton m_bButton = new JoystickButton(m_controller, 3);
+	public XboxController m_controller = new XboxController(0);
+	JoystickButton m_aButton = new JoystickButton(m_controller, 1);
+	JoystickButton m_bButton = new JoystickButton(m_controller, 2);
+	JoystickButton m_xButton = new JoystickButton(m_controller, 3);
+	JoystickButton m_yButton = new JoystickButton(m_controller, 4);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -43,8 +45,11 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// h
 	public OI() {
-		m_aButton.whenPressed( new RaiseLift() );
-		m_bButton.whenPressed( new LowerLift() );
+		m_xButton.whileHeld( new PullInCube() );
+		m_bButton.whileHeld( new PushOutCube() );
+		m_aButton.whileHeld( new LowerLift() );
+		m_yButton.whileHeld( new RaiseLift() );
+		
 	}
 	
 	// Run the command while the button is being held down and interrupt it once
