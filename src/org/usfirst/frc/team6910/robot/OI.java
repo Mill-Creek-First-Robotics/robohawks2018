@@ -43,7 +43,6 @@ public class OI {
 
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
-	// h
 	public OI() {
 		m_xButton.whileHeld( new PullInCube() );
 		m_bButton.whileHeld( new PushOutCube() );
