@@ -27,20 +27,26 @@ public class Lift extends Subsystem  {
 
 	public void initDefaultCommand() {
 		m_motor = new Talon(Robot.m_robotMap.liftMotor);
+		
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
 	
 	public void up() {
-		m_motor.set(ControlMode.PercentOutput, speed);
+		m_motor.set(speed);
 	}
 	
 	public void down() {
-		m_motor.set(ControlMode.PercentOutput, -1 * speed);
+		m_motor.set(-1 * speed);
 	}
 	
 	public void stop() {
-		m_motor.set(ControlMode.PercentOutput, 0.0f);
+		m_motor.stopMotor();
+	}
+	
+	public Boolean isMoving() {
+		if (m_motor.get() <= 0.0f) { return true; }
+		else { return false; }
 	}
 
 }

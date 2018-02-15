@@ -16,7 +16,7 @@ import org.usfirst.frc.team6910.robot.Robot;
 public class RaiseLift extends Command {
 	public RaiseLift() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.lift);
+		requires(Robot.m_lift);
 	}
 
 	// Called just before this Command runs the first time
@@ -28,23 +28,26 @@ public class RaiseLift extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println("Lifting up!");
+		Robot.m_lift.up();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		Robot.m_lift.stop();
+		return true;
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		Robot.m_lift.stop();
 	}
 }
