@@ -34,7 +34,7 @@ public class PullInCube extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		Robot.m_cc.stop();
+		//Robot.m_cc.stop();
 		return true;
 	}
 
@@ -47,6 +47,6 @@ public class PullInCube extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.m_cc.stop();
+		//Robot.m_cc.stop();
 	}
 }

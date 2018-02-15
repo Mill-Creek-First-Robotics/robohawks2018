@@ -34,12 +34,12 @@ import org.usfirst.frc.team6910.robot.subsystems.TankDrive;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
-	public static OI m_oi;
-	public static CubeCollector m_cc; 
-	public static RobotMap m_robotMap;
-	public static Lift m_lift;
-	public static TankDrive m_tankDrive;
-	 
+	
+	public static final CubeCollector m_cc = new CubeCollector(); ; 
+	public static final RobotMap m_robotMap = new RobotMap();
+	public static final Lift m_lift = new Lift();
+	public static final TankDrive m_tankDrive = new TankDrive();
+	public static final OI m_oi = new OI();
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -50,12 +50,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_cc = new CubeCollector(); 
-		m_lift = new Lift();
-		m_robotMap = new RobotMap();
-		m_tankDrive = new TankDrive();
-		
+
 		
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());

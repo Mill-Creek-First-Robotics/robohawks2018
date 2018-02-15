@@ -9,7 +9,9 @@ package org.usfirst.frc.team6910.robot.subsystems;
 
 import org.usfirst.frc.team6910.robot.Robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,14 +21,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CubeCollector extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	public double speed = .05f;
-	private SpeedController m_motor;
+	public double speed = .1f;
+	private SpeedController m_motorA;
+	private SpeedController m_motorB;
+	private SpeedControllerGroup m_motor;
 	public Robot robot;
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new loop());
-		m_motor = new Talon(Robot.m_robotMap.liftMotor);
+		m_motorA = new Talon(6);
+		m_motorB = new Talon(7);
+		m_motor = new SpeedControllerGroup(m_motorA, m_motorB);
+	
 	}
 	
 	public void push() {
