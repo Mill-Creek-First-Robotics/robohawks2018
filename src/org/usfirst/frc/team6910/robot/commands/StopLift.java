@@ -13,10 +13,10 @@ import org.usfirst.frc.team6910.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class PushOutCube extends Command {
-	public PushOutCube() {
+public class StopLift extends Command {
+	public StopLift() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.m_cc);
+		requires(Robot.m_lift);
 	}
 
 	// Called just before this Command runs the first time
@@ -28,13 +28,12 @@ public class PushOutCube extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.m_cc.push();
+		Robot.m_lift.stop();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-
 		return true;
 	}
 
@@ -47,6 +46,6 @@ public class PushOutCube extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.m_cc.stop();
+		//Robot.m_cc.stop();
 	}
 }

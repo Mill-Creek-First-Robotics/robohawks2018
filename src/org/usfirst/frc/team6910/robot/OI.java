@@ -44,10 +44,18 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	public OI() {
+		// Bind motors to controller buttons
 		m_xButton.whileHeld( new PullInCube() );
 		m_bButton.whileHeld( new PushOutCube() );
 		m_aButton.whileHeld( new LowerLift() );
 		m_yButton.whileHeld( new RaiseLift() );
+		
+		// Stop motors when buttons are released. 
+		m_xButton.whenReleased( new StopCubeCollector() );
+		m_bButton.whenReleased( new StopCubeCollector() );
+		m_aButton.whenReleased( new StopLift() );
+		m_yButton.whenReleased( new StopLift() );
+		
 		
 	}
 	
