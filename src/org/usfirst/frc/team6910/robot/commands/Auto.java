@@ -21,27 +21,32 @@ public class Auto extends Command {
 	private Timer timer;
 	private boolean hasTraveled = false;
 	private double speed = 0.4f;
-	private int length = 5000; // Time in milliseconds
+	private long length = 5000; // Time in milliseconds
+	private long elapsed = 0;
 	
 	public Auto() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
-		timer = new Timer();
+//		timer = new Timer();
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		timer.schedule(new StopTask(), length);
+//		timer.schedule(new StopTask(), length, 1000);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		if (!hasTraveled) {
+//		if (!hasTraveled) {
+//			Robot.m_tankDrive.drive(speed, speed);
+//		} else {
+//			Robot.m_tankDrive.drive(0, 0);
+//		}
+		if (elapsed >= length) {
 			Robot.m_tankDrive.drive(speed, speed);
-		} else {
-			Robot.m_tankDrive.drive(0, 0);
+			elapsed += 50;
 		}
 	}
 
@@ -61,14 +66,14 @@ public class Auto extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		hasTraveled = false;
-		timer.cancel();
+		hasTraveled = true;
+//		timer.cancel();
 		
 	}
 	
 	class StopTask extends TimerTask {
 		public void run() {
-			hasTraveled = false;
+			hasTraveled = true;
 			timer.cancel();
 		}
 	}
