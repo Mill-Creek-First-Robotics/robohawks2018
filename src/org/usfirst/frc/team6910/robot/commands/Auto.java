@@ -20,9 +20,9 @@ import org.usfirst.frc.team6910.robot.Robot;
 public class Auto extends Command {
 	private Timer timer;
 	private boolean hasTraveled = false;
-	private double speed = 0.4f;
+	private double speed = 0.3f;
 	private long length = 5000; // Time in milliseconds
-	private long elapsed = 0;
+	private long startTime, endTime;
 	
 	public Auto() {
 		// Use requires() here to declare subsystem dependencies
@@ -34,20 +34,20 @@ public class Auto extends Command {
 	@Override
 	protected void initialize() {
 //		timer.schedule(new StopTask(), length, 1000);
+		Robot.m_tankDrive.m_DiffDrive.setExpiration(.5);
+		startTime = System.currentTimeMillis();
+		endTime = startTime + length;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-//		if (!hasTraveled) {
-//			Robot.m_tankDrive.drive(speed, speed);
-//		} else {
-//			Robot.m_tankDrive.drive(0, 0);
-//		}
-		if (elapsed >= length) {
-			Robot.m_tankDrive.drive(speed, speed);
-			elapsed += 50;
-		}
+		if (System.currentTimeMillis() >= endTime) {
+			hasTraveled = true;
+		};
+		
+		Robot.m_tankDrive.drive(speed, speed);
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -71,10 +71,10 @@ public class Auto extends Command {
 		
 	}
 	
-	class StopTask extends TimerTask {
-		public void run() {
-			hasTraveled = true;
-			timer.cancel();
-		}
-	}
+//	class StopTask extends TimerTask {
+//		public void run() {
+//			hasTraveled = true;
+//			timer.cancel();
+//		}
+//	}
 }

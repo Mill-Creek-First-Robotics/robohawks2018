@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CubeCollector extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	public double speed = .1f;
+	public double speed = .6f;
 	private SpeedController m_motorA;
 	private SpeedController m_motorB;
 	private SpeedControllerGroup m_motor;

@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class TankDrive extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private DifferentialDrive m_DiffDrive; // Differential Drive for controlling drive chain 
+	public DifferentialDrive m_DiffDrive; // Differential Drive for controlling drive chain 
 	private double m_MotorSensitivity = -.8f;
 	
 	public void initDefaultCommand() {
