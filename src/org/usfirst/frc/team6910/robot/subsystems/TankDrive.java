@@ -29,10 +29,14 @@ public class TankDrive extends Subsystem {
 		Spark m_leftFrontSpark = new Spark(Robot.m_robotMap.leftFrontMotor);
 		Spark m_leftBackSpark = new Spark(Robot.m_robotMap.leftBackMotor);
 		SpeedControllerGroup m_leftMotorGroup = new SpeedControllerGroup(m_leftFrontSpark, m_leftBackSpark);
+		m_leftFrontSpark.setSafetyEnabled(false);
+		m_leftBackSpark.setSafetyEnabled(false);
 		
 		Spark m_rightFrontSpark = new Spark(Robot.m_robotMap.rightFrontMotor);
 		Spark m_rightBackSpark = new Spark(Robot.m_robotMap.rightBackMotor);
 		SpeedControllerGroup m_rightMotorGroup = new SpeedControllerGroup(m_rightFrontSpark, m_rightBackSpark);
+		m_rightFrontSpark.setSafetyEnabled(false);
+		m_rightBackSpark.setSafetyEnabled(false);
 		
 		m_DiffDrive = new DifferentialDrive(m_leftMotorGroup, m_rightMotorGroup);
 		

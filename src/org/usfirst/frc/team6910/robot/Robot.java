@@ -100,6 +100,7 @@ public class Robot extends TimedRobot {
 		
 		
 		// schedule the autonomous command (example)
+		
 		m_autonomousCommand.start();
 	}
 
