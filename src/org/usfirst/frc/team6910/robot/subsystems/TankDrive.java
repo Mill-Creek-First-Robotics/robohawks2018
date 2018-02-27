@@ -40,6 +40,8 @@ public class TankDrive extends Subsystem {
 		
 		m_DiffDrive = new DifferentialDrive(m_leftMotorGroup, m_rightMotorGroup);
 		
+		m_DiffDrive.setSafetyEnabled(false);
+		
 	}
 	
 	public void drive(double left, double right) {
