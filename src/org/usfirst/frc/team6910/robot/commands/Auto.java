@@ -18,10 +18,9 @@ import org.usfirst.frc.team6910.robot.Robot;
  * An example command.  You can replace me with your own command.
  */
 public class Auto extends Command {
-	private Timer timer;
 	private boolean hasTraveled = false;
-	private double speed = 0.3f;
-	private long length = 5000; // Time in milliseconds
+	private double speed = -0.8f;
+	private long length = 2000; // Time in milliseconds
 	private long startTime, endTime;
 	
 	public Auto() {
@@ -36,17 +35,21 @@ public class Auto extends Command {
 //		timer.schedule(new StopTask(), length, 1000);
 		Robot.m_tankDrive.m_DiffDrive.setExpiration(.5);
 		startTime = System.currentTimeMillis();
+		System.out.println(startTime);
 		endTime = startTime + length;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		if (System.currentTimeMillis() >= endTime) {
-			hasTraveled = true;
-		};
-		
 		Robot.m_tankDrive.drive(speed, speed);
+		if (System.currentTimeMillis() >= endTime) {
+			Robot.m_tankDrive.drive(0.0f, 0.0f);
+			hasTraveled = true;
+			
+		}
+		
+		
 
 	}
 
