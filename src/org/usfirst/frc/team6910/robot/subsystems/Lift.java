@@ -21,7 +21,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 public class Lift extends Subsystem  {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	public double speed = .05f;
+	public double speed = .3f;
 	private SpeedController m_motor;
 	public Robot robot;
 

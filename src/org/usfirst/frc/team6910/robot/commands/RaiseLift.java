@@ -34,7 +34,6 @@ public class RaiseLift extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		Robot.m_lift.stop();
 		return true;
 	}
 
@@ -48,6 +47,6 @@ public class RaiseLift extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.m_lift.stop();
+		
 	}
 }

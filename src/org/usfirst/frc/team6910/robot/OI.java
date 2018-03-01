@@ -29,7 +29,7 @@ public class OI {
 	// Joystick m_rightStick = new Joystick(0);
 	public XboxController m_controller = new XboxController(0);
 	JoystickButton m_aButton = new JoystickButton(m_controller, 1);
-	JoystickButton m_bButton = new JoystickButton(m_controller, 2);
+	JoystickButton m_yButton = new JoystickButton(m_controller, 4);
 	JoystickButton m_lTButton = new JoystickButton(m_controller, 5);
 	JoystickButton m_rTButton = new JoystickButton(m_controller, 6);
 
@@ -46,15 +46,15 @@ public class OI {
 	public OI() {
 		// Bind motors to controller buttons
 		m_lTButton.whileHeld( new PullInCube() );
-		m_bButton.whileHeld( new PushOutCube() );
+		m_rTButton.whileHeld( new PushOutCube() );
 		m_aButton.whileHeld( new LowerLift() );
-		m_rTButton.whileHeld( new RaiseLift() );
+		m_yButton.whileHeld( new RaiseLift() );
 		
 		// Stop motors when buttons are released. 
 		m_lTButton.whenReleased( new StopCubeCollector() );
-		m_bButton.whenReleased( new StopCubeCollector() );
+		m_rTButton.whenReleased( new StopCubeCollector() );
 		m_aButton.whenReleased( new StopLift() );
-		m_rTButton.whenReleased( new StopLift() );
+		m_yButton.whenReleased( new StopLift() );
 		
 		
 	}
