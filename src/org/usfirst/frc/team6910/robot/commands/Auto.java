@@ -20,7 +20,7 @@ import org.usfirst.frc.team6910.robot.Robot;
 public class Auto extends Command {
 	private boolean hasTraveled = false;
 	private double speed = -0.8f;
-	private long length = 2000; // Time in milliseconds
+	public long length = 2000; // Time in milliseconds
 	private long startTime, endTime;
 	
 	public Auto() {
@@ -37,6 +37,7 @@ public class Auto extends Command {
 		startTime = System.currentTimeMillis();
 		System.out.println(startTime);
 		endTime = startTime + length;
+		hasTraveled = false;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
