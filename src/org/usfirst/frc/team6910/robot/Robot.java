@@ -8,6 +8,7 @@
 package org.usfirst.frc.team6910.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -34,8 +35,8 @@ import org.usfirst.frc.team6910.robot.subsystems.TankDrive;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+//	public static final ExampleSubsystem kExampleSubsystem
+//			= new ExampleSubsystem();
 	
 	public static final CubeCollector m_cc = new CubeCollector(); ; 
 	public static final RobotMap m_robotMap = new RobotMap();
@@ -43,6 +44,8 @@ public class Robot extends TimedRobot {
 	public static final TankDrive m_tankDrive = new TankDrive();
 	public static final OI m_oi = new OI();
 	public static final Auto m_autonomousCommand = new Auto();
+	
+	Preferences m_prefs;
 	
 	//Command m_autonomousCommand;
 	//SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -53,11 +56,13 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-
+		m_prefs = Preferences.getInstance();
+		m_autonomousCommand.length = m_prefs.getLong("AutoLength", 2000);
 		
 //		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 //		SmartDashboard.putData("Auto mode", m_chooser);
+		
 	}
 
 	/**
