@@ -35,8 +35,8 @@ import org.usfirst.frc.team6910.robot.subsystems.TankDrive;
  * project.
  */
 public class Robot extends TimedRobot {
-//	public static final ExampleSubsystem kExampleSubsystem
-//			= new ExampleSubsystem();
+	public static final ExampleSubsystem kExampleSubsystem
+			= new ExampleSubsystem();
 	
 	public static final CubeCollector m_cc = new CubeCollector(); ; 
 	public static final RobotMap m_robotMap = new RobotMap();

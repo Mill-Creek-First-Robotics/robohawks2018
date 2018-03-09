@@ -45,7 +45,7 @@ public class TankDrive extends Subsystem {
 	}
 	
 	public void drive(double left, double right) {
-		m_DiffDrive.tankDrive( left * m_MotorSensitivity , right * m_MotorSensitivity * .94f);
+		m_DiffDrive.tankDrive( left * m_MotorSensitivity, right * m_MotorSensitivity * .95f);
 	}
 	
 	public void set_sens(double s) {
