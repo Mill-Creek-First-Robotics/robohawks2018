@@ -17,13 +17,13 @@ import org.usfirst.frc.team6910.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class Auto extends Command {
+public class SidesAuto extends Command {
 	private boolean hasTraveled = false;
 	private double speed = -0.8f;
 	public long length = 2000; // Time in milliseconds
 	private long startTime, endTime;
 	
-	public Auto() {
+	public SidesAuto() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
 //		timer = new Timer();

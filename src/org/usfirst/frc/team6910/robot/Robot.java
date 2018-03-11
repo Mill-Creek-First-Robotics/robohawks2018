@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team6910.robot.commands.Auto;
+import org.usfirst.frc.team6910.robot.commands.SidesAuto;
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
 import org.usfirst.frc.team6910.robot.commands.TankDriveWithController;
@@ -43,12 +43,12 @@ public class Robot extends TimedRobot {
 	public static final Lift m_lift = new Lift();
 	public static final TankDrive m_tankDrive = new TankDrive();
 	public static final OI m_oi = new OI();
-	public static final Auto m_autonomousCommand = new Auto();
+	public static final SidesAuto m_sidesAutoCommand = new SidesAuto();
 	
 	Preferences m_prefs;
 	
-	//Command m_autonomousCommand;
-	//SendableChooser<Command> m_chooser = new SendableChooser<>();
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -59,9 +59,9 @@ public class Robot extends TimedRobot {
 		m_prefs = Preferences.getInstance();
 		m_autonomousCommand.length = m_prefs.getLong("AutoLength", 2000);
 		
-//		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", m_chooser);
+		m_chooser.addDefault("Sides Auto (Default)", new SidesAuto());
+		chooser.addObject("Sides Auto", new SidesAuto());
+		SmartDashboard.putData("Auto mode", m_chooser);
 		
 	}
 
@@ -93,7 +93,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-//		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = m_chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
