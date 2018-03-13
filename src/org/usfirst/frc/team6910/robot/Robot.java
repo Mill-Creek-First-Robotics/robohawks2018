@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
 
 import org.usfirst.frc.team6910.robot.commands.SidesAuto;
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
@@ -62,6 +63,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Sides Auto (Default)", new SidesAuto());
 		chooser.addObject("Sides Auto", new SidesAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
+
+		CameraServer.getInstance().startAutomaticCapture();
 		
 	}
 
