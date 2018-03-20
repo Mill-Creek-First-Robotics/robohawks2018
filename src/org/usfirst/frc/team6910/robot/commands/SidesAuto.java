@@ -22,11 +22,14 @@ public class SidesAuto extends Command {
 	private double speed = -0.8f;
 	public long length = 2000; // Time in milliseconds
 	private long startTime, endTime;
+
 	
 	public SidesAuto() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
-//		timer = new Timer();
+//		timer = new Timer();h
+		length = Robot.m_prefs.getLong("SidesAutoLength", 2000);
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -49,8 +52,6 @@ public class SidesAuto extends Command {
 			hasTraveled = true;
 			
 		}
-		
-		
 
 	}
 

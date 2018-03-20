@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 
 import org.usfirst.frc.team6910.robot.commands.SidesAuto;
+import org.usfirst.frc.team6910.robot.commands.CenterAuto;
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
 import org.usfirst.frc.team6910.robot.commands.TankDriveWithController;
@@ -46,7 +47,7 @@ public class Robot extends TimedRobot {
 	public static final OI m_oi = new OI();
 	public static final SidesAuto m_sidesAutoCommand = new SidesAuto();
 	
-	Preferences m_prefs;
+	public static final Preferences m_prefs;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -58,10 +59,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_prefs = Preferences.getInstance();
-		m_autonomousCommand.length = m_prefs.getLong("AutoLength", 2000);
+		
 		
 		m_chooser.addDefault("Sides Auto (Default)", new SidesAuto());
-		chooser.addObject("Sides Auto", new SidesAuto());
+		m_chooser.addObject("Sides Auto NO SWITCH", new SidesAuto());
+		m_chooser.addObject("Center ", new CenterAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		CameraServer.getInstance().startAutomaticCapture();

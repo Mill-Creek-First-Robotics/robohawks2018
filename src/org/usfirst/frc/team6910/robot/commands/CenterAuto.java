@@ -15,34 +15,59 @@ import java.util.TimerTask;
 import org.usfirst.frc.team6910.robot.Robot;
 
 /**
- * An example command.  You can replace me with your own command.
+ * Flexible Auto Mode
  */
 public class CenterAuto extends Command {
 	private boolean hasTraveled = false;
 	private double speed = -0.8f;
-	public long[] length = {1000, 1000, 1000}; // Time in milliseconds
 	private int stage = 0;
 	private long startTime, endTime;
 	
 	private long turnLength = 250;
+	public long[] length = {1000, 1000, 1000}; // Times in milliseconds
+	public long centerLength = 500;
+	
 	private boolean isTurning = false;
 	private boolean hasDoneFirstTurn = false;
+	
+	private char position = '0';
+	private char target = '0';
+	private boolean safeToPlace = true;
 	
 	public CenterAuto() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
+		
 //		timer = new Timer();
+		
+
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-//		timer.schedule(new StopTask(), length, 1000);
+		centerLength = Robot.m_prefs.getLong("Center Length", 500).charAt(0);
+		position = Robot.m_prefs.getString("Position", "c").charAt(0);
+
+		String gameData = DriverStaton.getInstance().getGameSpecificMessage();
+		
+		if (gameData.length() > 0){
+			target = gameData.charAt(0);
+		} else {
+			safeToPlace = false;
+		}
+
+		if (position == 'c') length[0] = 500;
+
 		Robot.m_tankDrive.m_DiffDrive.setExpiration(.5);
 		startTime = System.currentTimeMillis();
 		System.out.println(startTime);
 		endTime = startTime + length[0];
 		hasTraveled = false;
+
+		
+		
+
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -75,9 +100,6 @@ public class CenterAuto extends Command {
 			}
 			
 		}
-
-
-		
 
 	}
 
