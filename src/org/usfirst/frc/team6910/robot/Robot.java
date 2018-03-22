@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
@@ -46,6 +47,7 @@ public class Robot extends TimedRobot {
 	public static final TankDrive m_tankDrive = new TankDrive();
 	public static final OI m_oi = new OI();
 	public static final SidesAuto m_sidesAutoCommand = new SidesAuto();
+	public static final DriverStation m_ds = DriverStation.getInstance();
 	
 	public static final Preferences m_prefs;
 	

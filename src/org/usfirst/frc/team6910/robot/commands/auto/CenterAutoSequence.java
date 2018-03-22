@@ -17,9 +17,9 @@ public class CenterAutoSequence extends CommandGroup {
 		position = Robot.m_prefs.getString("Position", "c").charAt(0);
 		timings =  Robot.m_prefs.getLong("centerAutoTiming", 0);
 		
-		DriverStation.getInstance().reportWarning(timings.toString(), false);
+		Robot.m_ds.reportWarning(timings.toString(), false);
 
-		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		String gameData = Robot.m_ds.getGameSpecificMessage();
 		
 		
 		if (gameData.length() > 0){
