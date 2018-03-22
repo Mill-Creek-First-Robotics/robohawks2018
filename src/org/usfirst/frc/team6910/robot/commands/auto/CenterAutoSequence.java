@@ -9,11 +9,15 @@ public class CenterAutoSequence extends CommandGroup {
 	public long centerLength = 500;
 	private char position = 'c';
 	private char target;
+	private long[] timings;
 	boolean safeToPlace = true;
 	
 	public CenterAutoSequence() {
 		centerLength = Robot.m_prefs.getLong("Center Length", 500);
 		position = Robot.m_prefs.getString("Position", "c").charAt(0);
+		timings =  Robot.m_prefs.getLong("centerAutoTiming", 0);
+		
+		DriverStation.getInstance().reportWarning(timings.toString(), false);
 
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
@@ -21,13 +25,15 @@ public class CenterAutoSequence extends CommandGroup {
 		if (gameData.length() > 0){
 			target = gameData.charAt(0);
 		} else {
-			safeToPlace = false;k
+			safeToPlace = false;
 		}
 
 		
-		addSequential(new StraightAuto(1000));
+		addSequential(new StraightAuto(timings[0]));
 		addSequential(new TurnAuto(false));
-		addSequential(new StraightAuto(1000));
+		addSequential(new StraightAuto(timings[1]));
+		addSequential(new TurnAuto(true));
+		addSequential(new StraightAuto(timings[3]));
 		if (safeToPlace) addSequential(new PlaceCubeAuto());
 	}
 }

@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
 		
 		m_chooser.addDefault("Sides Auto (Default)", new SidesAuto());
 		m_chooser.addObject("Sides Auto NO SWITCH", new SidesAuto());
-		m_chooser.addObject("Center ", new CenterAuto());
+		m_chooser.addObject("c", new CenterAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		CameraServer.getInstance().startAutomaticCapture();
