@@ -5,8 +5,9 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team6910.robot.commands;
+package org.usfirst.frc.team6910.robot.commands.auto;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 import java.util.Timer;
@@ -46,10 +47,10 @@ public class CenterAuto extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		centerLength = Robot.m_prefs.getLong("Center Length", 500).charAt(0);
+		centerLength = Robot.m_prefs.getLong("Center Length", 500);
 		position = Robot.m_prefs.getString("Position", "c").charAt(0);
 
-		String gameData = DriverStaton.getInstance().getGameSpecificMessage();
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
 		if (gameData.length() > 0){
 			target = gameData.charAt(0);
@@ -65,8 +66,6 @@ public class CenterAuto extends Command {
 		endTime = startTime + length[0];
 		hasTraveled = false;
 
-		
-		
 
 	}
 

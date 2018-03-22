@@ -17,25 +17,25 @@ import org.usfirst.frc.team6910.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class SidesAuto extends Command {
+public class StraightAuto extends Command {
 	private boolean hasTraveled = false;
 	private double speed = -0.8f;
 	public long length = 2000; // Time in milliseconds
 	private long startTime, endTime;
 
 	
-	public SidesAuto() {
+	public StraightAuto(long l) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
-//		timer = new Timer();h
-		length = Robot.m_prefs.getLong("SidesAutoLength", 2000);
+		length = l;
+		
+		
 		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-//		timer.schedule(new StopTask(), length, 1000);
 		Robot.m_tankDrive.m_DiffDrive.setExpiration(.5);
 		startTime = System.currentTimeMillis();
 		System.out.println(startTime);
@@ -72,14 +72,7 @@ public class SidesAuto extends Command {
 	@Override
 	protected void interrupted() {
 		hasTraveled = true;
-//		timer.cancel();
 		
 	}
 	
-//	class StopTask extends TimerTask {
-//		public void run() {
-//			hasTraveled = true;
-//			timer.cancel();
-//		}
-//	}
 }

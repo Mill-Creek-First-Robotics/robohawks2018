@@ -8,34 +8,29 @@
 package org.usfirst.frc.team6910.robot.commands.auto;
 
 import edu.wpi.first.wpilibj.command.Command;
-
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.usfirst.frc.team6910.robot.Robot;
 
 /**
  * An example command.  You can replace me with your own command.
  */
-public class SidesAuto extends Command {
+
+
+
+public class TurnAuto extends Command {
+	private boolean dir;
 	private boolean hasTraveled = false;
 	private double speed = -0.8f;
 	public long length = 2000; // Time in milliseconds
 	private long startTime, endTime;
-
-	
-	public SidesAuto() {
+	public TurnAuto(boolean d) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
-//		timer = new Timer();h
-		length = Robot.m_prefs.getLong("SidesAutoLength", 2000);
-		
+		dir = d;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-//		timer.schedule(new StopTask(), length, 1000);
 		Robot.m_tankDrive.m_DiffDrive.setExpiration(.5);
 		startTime = System.currentTimeMillis();
 		System.out.println(startTime);
@@ -46,13 +41,18 @@ public class SidesAuto extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.m_tankDrive.drive(speed, speed);
+		
+		if (dir) {
+			Robot.m_tankDrive.drive(-speed, speed);
+	
+		} else {
+			Robot.m_tankDrive.drive(speed, -speed);
+		}
+		
 		if (System.currentTimeMillis() >= endTime) {
 			Robot.m_tankDrive.drive(0.0f, 0.0f);
 			hasTraveled = true;
-			
 		}
-
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -64,7 +64,6 @@ public class SidesAuto extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		
 	}
 
 	// Called when another command which requires one or more of the same
@@ -72,14 +71,5 @@ public class SidesAuto extends Command {
 	@Override
 	protected void interrupted() {
 		hasTraveled = true;
-//		timer.cancel();
-		
 	}
-	
-//	class StopTask extends TimerTask {
-//		public void run() {
-//			hasTraveled = true;
-//			timer.cancel();
-//		}
-//	}
 }

@@ -19,11 +19,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 
-import org.usfirst.frc.team6910.robot.commands.SidesAuto;
-import org.usfirst.frc.team6910.robot.commands.CenterAuto;
 import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
 import org.usfirst.frc.team6910.robot.commands.TankDriveWithController;
+import org.usfirst.frc.team6910.robot.commands.auto.CenterAuto;
+import org.usfirst.frc.team6910.robot.commands.auto.SidesAuto;
 import org.usfirst.frc.team6910.robot.subsystems.CubeCollector;
 import org.usfirst.frc.team6910.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team6910.robot.subsystems.Lift;
