@@ -24,6 +24,7 @@ import org.usfirst.frc.team6910.robot.commands.ExampleCommand;
 import org.usfirst.frc.team6910.robot.commands.RaiseLift;
 import org.usfirst.frc.team6910.robot.commands.TankDriveWithController;
 import org.usfirst.frc.team6910.robot.commands.auto.CenterAuto;
+import org.usfirst.frc.team6910.robot.commands.auto.FancyAuto;
 import org.usfirst.frc.team6910.robot.commands.auto.SidesAuto;
 import org.usfirst.frc.team6910.robot.subsystems.CubeCollector;
 import org.usfirst.frc.team6910.robot.subsystems.ExampleSubsystem;
@@ -46,10 +47,10 @@ public class Robot extends TimedRobot {
 	public static final Lift m_lift = new Lift();
 	public static final TankDrive m_tankDrive = new TankDrive();
 	public static final OI m_oi = new OI();
-	public static final SidesAuto m_sidesAutoCommand = new SidesAuto();
+	//public static final SidesAuto m_sidesAutoCommand = new SidesAuto();
 	public static final DriverStation m_ds = DriverStation.getInstance();
+	public static final Preferences m_prefs = Preferences.getInstance();
 	
-	public static final Preferences m_prefs;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -60,12 +61,11 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_prefs = Preferences.getInstance();
 		
-		
-		m_chooser.addDefault("Sides Auto (Default)", new SidesAuto());
+		m_chooser.addDefault("fancy", new FancyAuto());
 		m_chooser.addObject("Sides Auto NO SWITCH", new SidesAuto());
-		m_chooser.addObject("c", new CenterAuto());
+		m_chooser.addObject("Center", new CenterAuto());
+		m_chooser.addObject("fancy", new FancyAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		CameraServer.getInstance().startAutomaticCapture();
