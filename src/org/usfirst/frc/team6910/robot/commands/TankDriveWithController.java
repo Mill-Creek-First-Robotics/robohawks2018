@@ -30,8 +30,8 @@ public class TankDriveWithController extends Command {
 	protected void execute() {
 		// Send the controller input to the TankDrive, after passing it through the function X^2 
 		Robot.m_tankDrive.drive(
-				Math.pow(Robot.m_oi.m_controller.getY(GenericHID.Hand.kLeft), 2),
-				Math.pow(Robot.m_oi.m_controller.getY(GenericHID.Hand.kRight), 2)
+				Math.pow(Robot.m_oi.m_leftController.getY(), 2),
+				Math.pow(Robot.m_oi.m_rightController.getY(), 2)
 				);
 	}
 

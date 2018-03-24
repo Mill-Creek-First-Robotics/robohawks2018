@@ -27,11 +27,13 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Joystick m_rightStick = new Joystick(0);
-	public XboxController m_controller = new XboxController(0);
-	JoystickButton m_aButton = new JoystickButton(m_controller, 1);
-	JoystickButton m_yButton = new JoystickButton(m_controller, 4);
-	JoystickButton m_lTButton = new JoystickButton(m_controller, 5);
-	JoystickButton m_rTButton = new JoystickButton(m_controller, 6);
+	//public XboxController m_controller = new XboxController(0);
+	public Joystick m_leftController = new Joystick(0);
+	public Joystick m_rightController = new Joystick(1);
+	JoystickButton m_lTButton = new JoystickButton(m_rightController, 3);
+	JoystickButton m_rTButton = new JoystickButton(m_rightController, 4);
+	JoystickButton m_aButton = new JoystickButton(m_leftController, 6);
+	JoystickButton m_yButton = new JoystickButton(m_leftController, 4);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

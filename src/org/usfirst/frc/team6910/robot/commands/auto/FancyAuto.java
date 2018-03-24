@@ -21,7 +21,9 @@ public class FancyAuto extends CommandGroup {
 		
 		DriverStation.reportWarning(timings.toString(), false);
 
+		
 		String gameData = Robot.m_ds.getGameSpecificMessage();
+		DriverStation.reportWarning(gameData, false);
 		
 		if (gameData.length() > 0){
 			target = gameData.charAt(0);
@@ -36,21 +38,23 @@ public class FancyAuto extends CommandGroup {
 		}
 		
 		if (position == 'c') {
-
+			DriverStation.reportWarning("Center Started", false);
 			addSequential(new StraightAuto(timings[0]));
 			addSequential(new TurnAuto(false));
 			addSequential(new StraightAuto(timings[1]));
 			addSequential(new TurnAuto(direction));
 			addSequential(new StraightAuto(timings[2]));
-			
+			DriverStation.reportWarning("Center Ended", false);
 		} else {
 			if (position == 'l' || position == 'r') {
+				DriverStation.reportWarning("Sides Started", false);
 				if (position == Character.toLowerCase(target)) {
 					safeToPlace = true;
 				}
 				addSequential(new StraightAuto(length));
 				addSequential(new TurnAuto(!direction)); 
 				addSequential(new StraightAuto(timings[2]));
+				DriverStation.reportWarning("Sides Sequenced", false);
 			}
 		}
 		if (safeToPlace) addSequential(new PlaceCubeAuto());

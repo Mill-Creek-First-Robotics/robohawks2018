@@ -62,10 +62,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		
-		m_chooser.addDefault("fancy", new FancyAuto());
-		m_chooser.addObject("Sides Auto NO SWITCH", new SidesAuto());
-		m_chooser.addObject("Center", new CenterAuto());
-		m_chooser.addObject("fancy", new FancyAuto());
+		m_chooser.addDefault("Fancy", new FancyAuto());
+		m_chooser.addObject("Sides Auto (No Switch)", new SidesAuto());
+		m_chooser.addObject("Broken Center", new CenterAuto());
+		m_chooser.addObject("Fancy", new FancyAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		CameraServer.getInstance().startAutomaticCapture();
@@ -142,8 +142,8 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		m_tankDrive.drive(
-				Robot.m_oi.m_controller.getY(GenericHID.Hand.kLeft),
-				Robot.m_oi.m_controller.getY(GenericHID.Hand.kRight)
+				Robot.m_oi.m_leftController.getY(GenericHID.Hand.kLeft),
+				Robot.m_oi.m_rightController.getY(GenericHID.Hand.kRight)
 				);
 	}
 

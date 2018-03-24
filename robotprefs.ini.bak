@@ -1,0 +1,6 @@
+[NetworkTables Storage 3.0]
+string "/Preferences/.type"="RobotPreferences"
+array double "/Preferences/centerAutoTiming"=1000,200
+double "/Preferences/centerAutoTimingA"=500
+double "/Preferences/centerAutoTimingB"=750
+double "/Preferences/centerAutoTimingC"=250
