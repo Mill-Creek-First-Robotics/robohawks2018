@@ -34,6 +34,11 @@ public class OI {
 	JoystickButton m_rTButton = new JoystickButton(m_rightController, 4);
 	JoystickButton m_aButton = new JoystickButton(m_leftController, 6);
 	JoystickButton m_yButton = new JoystickButton(m_leftController, 4);
+	
+	JoystickButton m_backupUp = new JoystickButton(m_leftController, 12);
+	JoystickButton m_backupDown = new JoystickButton(m_leftController, 11);
+	JoystickButton m_backupIn = new JoystickButton(m_leftController, 9);
+	JoystickButton m_backupOut = new JoystickButton(m_leftController, 7);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -57,6 +62,18 @@ public class OI {
 		m_rTButton.whenReleased( new StopCubeCollector() );
 		m_aButton.whenReleased( new StopLift() );
 		m_yButton.whenReleased( new StopLift() );
+		
+		// Bind motors to backup controller buttons
+		m_backupIn.whileHeld( new PullInCube() );
+		m_backupOut.whileHeld( new PushOutCube() );
+		m_backupDown.whileHeld( new LowerLift() );
+		m_backupUp.whileHeld( new RaiseLift() );
+		
+		// Stop motors when buttons are released. 
+		m_backupIn.whenReleased( new StopCubeCollector() );
+		m_backupOut.whenReleased( new StopCubeCollector() );
+		m_backupDown.whenReleased( new StopLift() );
+		m_backupUp.whenReleased( new StopLift() );
 		
 		
 	}

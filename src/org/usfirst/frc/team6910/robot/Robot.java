@@ -62,12 +62,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		
-		m_chooser.addDefault("Fancy", new FancyAuto());
+		m_chooser.addDefault("Sides Auto (No Switch)", new SidesAuto());
 		m_chooser.addObject("Sides Auto (No Switch)", new SidesAuto());
 		m_chooser.addObject("Broken Center", new CenterAuto());
 		m_chooser.addObject("Fancy", new FancyAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
-
+		
 		CameraServer.getInstance().startAutomaticCapture();
 		
 	}
@@ -101,7 +101,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
-
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -112,8 +112,11 @@ public class Robot extends TimedRobot {
 		
 		
 		// schedule the autonomous command (example)
-		
-		m_autonomousCommand.start();
+		if(m_autonomousCommand != null) {
+			m_autonomousCommand.start();
+		} else {
+			DriverStation.reportError("Auto mode not set for autoInit.", false);
+		}
 	}
 
 	/**
@@ -130,8 +133,11 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		
-		m_autonomousCommand.cancel();
+		if(m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
+		} else {
+			DriverStation.reportError("Auto mode not set for teleopInit.", false);
+		}
 		
 	}
 

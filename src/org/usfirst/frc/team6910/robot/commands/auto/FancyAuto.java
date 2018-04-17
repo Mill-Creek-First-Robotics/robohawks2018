@@ -19,11 +19,11 @@ public class FancyAuto extends CommandGroup {
 		long[] timings =  {Robot.m_prefs.getLong("centerAutoTimingA", 500), Robot.m_prefs.getLong("centerAutoTimingB", 750), Robot.m_prefs.getLong("centerAutoTimingC", 250)};
 		length = Robot.m_prefs.getLong("SidesAutoLength", 2000);
 		
-		DriverStation.reportWarning(timings.toString(), false);
+		//DriverStation.reportWarning(timings.toString(), false);
 
 		
 		String gameData = Robot.m_ds.getGameSpecificMessage();
-		DriverStation.reportWarning(gameData, false);
+		DriverStation.reportWarning("########### Fancy Auto!?", false);
 		
 		if (gameData.length() > 0){
 			target = gameData.charAt(0);
@@ -38,23 +38,23 @@ public class FancyAuto extends CommandGroup {
 		}
 		
 		if (position == 'c') {
-			DriverStation.reportWarning("Center Started", false);
+			//DriverStation.reportWarning("Center Started", false);
 			addSequential(new StraightAuto(timings[0]));
 			addSequential(new TurnAuto(false));
 			addSequential(new StraightAuto(timings[1]));
 			addSequential(new TurnAuto(direction));
 			addSequential(new StraightAuto(timings[2]));
-			DriverStation.reportWarning("Center Ended", false);
+			//DriverStation.reportWarning("Center Ended", false);
 		} else {
 			if (position == 'l' || position == 'r') {
-				DriverStation.reportWarning("Sides Started", false);
+				//DriverStation.reportWarning("Sides Started", false);
 				if (position == Character.toLowerCase(target)) {
 					safeToPlace = true;
 				}
 				addSequential(new StraightAuto(length));
 				addSequential(new TurnAuto(!direction)); 
 				addSequential(new StraightAuto(timings[2]));
-				DriverStation.reportWarning("Sides Sequenced", false);
+				//DriverStation.reportWarning("Sides Sequenced", false);
 			}
 		}
 		if (safeToPlace) addSequential(new PlaceCubeAuto());

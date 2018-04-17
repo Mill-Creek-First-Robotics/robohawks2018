@@ -47,6 +47,7 @@ public class CenterAuto extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		DriverStation.reportWarning("############ Auto: Center", false);
 		centerLength = Robot.m_prefs.getLong("Center Length", 500);
 		position = Robot.m_prefs.getString("Position", "c").charAt(0);
 

@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team6910.robot.commands.auto;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 import java.util.Timer;
@@ -28,13 +29,14 @@ public class SidesAuto extends Command {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_tankDrive);
 //		timer = new Timer();h
-		length = Robot.m_prefs.getLong("SidesAutoLength", 2000);
+		length = Robot.m_prefs.getLong("SidesAutoLength", 4500);
 		
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		DriverStation.reportWarning("################ Auto: Sides", false);
 //		timer.schedule(new StopTask(), length, 1000);
 		Robot.m_tankDrive.m_DiffDrive.setExpiration(.5);
 		startTime = System.currentTimeMillis();
