@@ -112,10 +112,15 @@ public class Robot extends TimedRobot {
 		
 		
 		// schedule the autonomous command (example)
+<<<<<<< HEAD
 		if(m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		} else {
 			DriverStation.reportError("Auto mode not set for autoInit.", false);
+=======
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.start();
+>>>>>>> 24519b2bcf6bcdcd0dad6327617b438556deaf06
 		}
 	}
 
@@ -133,10 +138,15 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+<<<<<<< HEAD
 		if(m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		} else {
 			DriverStation.reportError("Auto mode not set for teleopInit.", false);
+=======
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
+>>>>>>> 24519b2bcf6bcdcd0dad6327617b438556deaf06
 		}
 		
 	}
